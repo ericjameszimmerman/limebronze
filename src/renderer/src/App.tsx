@@ -1,34 +1,25 @@
-import Versions from './components/Versions'
-import electronLogo from './assets/electron.svg'
-
 function App(): React.JSX.Element {
-  const ipcHandle = (): void => window.electron.ipcRenderer.send('ping')
-
   return (
-    <>
-      <img alt="logo" className="logo" src={electronLogo} />
-      <div className="creator">Powered by electron-vite</div>
-      <div className="text">
-        Build an Electron app with <span className="react">React</span>
-        &nbsp;and <span className="ts">TypeScript</span>
-      </div>
-      <p className="tip">
-        Please try pressing <code>F12</code> to open the devTool
-      </p>
-      <div className="actions">
-        <div className="action">
-          <a href="https://electron-vite.org/" target="_blank" rel="noreferrer">
-            Documentation
-          </a>
+    <div className="min-h-screen bg-gray-100 flex items-center justify-center p-4">
+      <div className="max-w-sm w-full bg-white rounded-lg shadow-xl overflow-hidden">
+        <div className="p-6">
+          <h1 className="text-2xl font-bold text-gray-800 mb-2">Tailwind is Active</h1>
+          <p className="text-gray-600 text-base">
+            If you see this card styled with a shadow, rounded corners, and specific text sizes/colors, then Tailwind CSS is correctly configured and working in your Electron + Vite + React app.
+          </p>
         </div>
-        <div className="action">
-          <a target="_blank" rel="noreferrer" onClick={ipcHandle}>
-            Send IPC
-          </a>
+        <div className="px-6 pb-4">
+          <span className="inline-block bg-blue-200 rounded-full px-3 py-1 text-sm font-semibold text-blue-800 mr-2 mb-2">#electron</span>
+          <span className="inline-block bg-green-200 rounded-full px-3 py-1 text-sm font-semibold text-green-800 mr-2 mb-2">#react</span>
+          <span className="inline-block bg-yellow-200 rounded-full px-3 py-1 text-sm font-semibold text-yellow-800 mr-2 mb-2">#tailwind</span>
+        </div>
+        <div className="p-6 bg-gray-50 border-t border-gray-200">
+          <button className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 transition-colors duration-300">
+            A Styled Button
+          </button>
         </div>
       </div>
-      <Versions></Versions>
-    </>
+    </div>
   )
 }
 
