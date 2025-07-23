@@ -2,6 +2,7 @@ import { app, shell, BrowserWindow, ipcMain, Menu, dialog } from 'electron'
 import { join } from 'path'
 import { electronApp, optimizer, is } from '@electron-toolkit/utils'
 import icon from '../../resources/icon.png?asset'
+import { monitoringService } from './monitoring_service'
 
 function createWindow(): void {
   // Create the browser window.
@@ -50,8 +51,11 @@ function createWindow(): void {
   const menu = Menu.buildFromTemplate(menuTemplate)
   Menu.setApplicationMenu(menu)
 
+  monitoringService.setWindow(mainWindow)
+
   mainWindow.on('ready-to-show', () => {
     mainWindow.show()
+    monitoringService.start()
   })
 
   mainWindow.webContents.setWindowOpenHandler((details) => {
@@ -98,6 +102,7 @@ app.whenReady().then(() => {
 // for applications and their menu bar to stay active until the user quits
 // explicitly with Cmd + Q.
 app.on('window-all-closed', () => {
+  monitoringService.stop()
   if (process.platform !== 'darwin') {
     app.quit()
   }

@@ -1,10 +1,11 @@
 import React from 'react'
+import Dashboard from '../components/Dashboard'
 
 const HomeView: React.FC = () => {
   return (
-    <div className="p-4">
-      <h1 className="text-2xl font-bold">Home View</h1>
-      <p>This is the home view, which will replace the original content.</p>
+    <div>
+      <h1 className="text-2xl font-bold mb-4">Dashboard</h1>
+      <Dashboard />
     </div>
   )
 }
