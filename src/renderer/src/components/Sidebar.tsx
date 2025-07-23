@@ -1,7 +1,7 @@
 import React from 'react'
-import { FaHome, FaCog, FaUser, FaChess } from 'react-icons/fa'
+import { FaHome, FaCog, FaUser, FaFileAlt, FaChess } from 'react-icons/fa'
 
-export type View = 'home' | 'settings' | 'profile' | 'test'
+export type View = 'home' | 'settings' | 'profile' | 'documents' | 'test'
 
 interface SidebarProps {
   activeView: View
@@ -11,8 +11,9 @@ interface SidebarProps {
 const Sidebar: React.FC<SidebarProps> = ({ activeView, setActiveView }) => {
   const navItems = [
     { id: 'home', tooltip: 'Home', icon: <FaHome /> },
-    { id: 'settings', tooltip: 'Settings', icon: <FaCog /> },
+    { id: 'documents', tooltip: 'Documents', icon: <FaFileAlt /> },
     { id: 'profile', tooltip: 'Profile', icon: <FaUser /> },
+    { id: 'settings', tooltip: 'Settings', icon: <FaCog /> },
     { id: 'test', tooltip: 'Test', icon: <FaChess /> }
   ]
 

@@ -1,7 +1,11 @@
 import React from 'react'
-import { FaFile, FaFolderOpen, FaSave, FaUndo, FaRedo } from 'react-icons/fa'
+import { FaFile, FaFolderOpen, FaSave, FaUndo, FaRedo, FaPlus } from 'react-icons/fa'
 
-const Toolbar: React.FC = () => {
+interface ToolbarProps {
+  onAddDocument: () => void
+}
+
+const Toolbar: React.FC<ToolbarProps> = ({ onAddDocument }) => {
   const buttons = [
     { id: 'new', tooltip: 'New File', icon: <FaFile /> },
     { id: 'open', tooltip: 'Open File', icon: <FaFolderOpen /> },
@@ -21,6 +25,13 @@ const Toolbar: React.FC = () => {
           {button.icon}
         </button>
       ))}
+      <button
+        onClick={onAddDocument}
+        title="Add Document"
+        className="p-2 rounded-md hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+      >
+        <FaPlus />
+      </button>
     </div>
   )
 }
