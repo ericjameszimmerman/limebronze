@@ -1,6 +1,9 @@
+import Toolbar from './components/Toolbar'
+
 function App(): React.JSX.Element {
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col">
+      <Toolbar />
       <main className="flex-grow flex items-center justify-center p-4">
         <div className="max-w-sm w-full bg-white rounded-lg shadow-xl overflow-hidden">
           <div className="p-6">
