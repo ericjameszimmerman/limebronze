@@ -6,6 +6,7 @@ import SettingsView from './views/SettingsView'
 import ProfileView from './views/ProfileView'
 import { DocumentsView } from './views/DocumentsView'
 import TestView from './views/TestView'
+import StatusBar from './components/StatusBar'
 
 function App(): React.JSX.Element {
   const [activeView, setActiveView] = useState<View>('home')
@@ -22,23 +23,25 @@ function App(): React.JSX.Element {
   }
 
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col">
-      <Toolbar onAddDocument={handleAddDocument} />
-      <div className="flex flex-grow overflow-hidden">
-        <Sidebar activeView={activeView} setActiveView={setActiveView} />
-        <main className="flex-grow p-4">
+    // Main container uses flex row
+    <div className="h-screen bg-gray-100 flex">
+      <Sidebar activeView={activeView} setActiveView={setActiveView} />
+      {/* Main content area uses flex column to stack toolbar, content, and status bar */}
+      <div className="flex-grow flex flex-col">
+        <Toolbar onAddDocument={handleAddDocument} />
+        {/* The main content area is set to grow and allow scrolling */}
+        <main className="flex-grow p-4 overflow-y-auto">
           <div className={activeView === 'home' ? 'block' : 'hidden'}><HomeView /></div>
           <div className={activeView === 'settings' ? 'block' : 'hidden'}><SettingsView /></div>
           <div className={activeView === 'profile' ? 'block' : 'hidden'}><ProfileView /></div>
           <div className={activeView === 'documents' ? 'block h-full' : 'hidden'}><DocumentsView ref={documentsViewRef} /></div>
           <div className={activeView === 'test' ? 'block' : 'hidden'}><TestView /></div>
         </main>
+        <StatusBar />
       </div>
-      <footer className="bg-gray-200 border-t border-gray-300 p-2 text-center text-sm text-gray-600">
-        Status Bar
-      </footer>
     </div>
   )
 }
 
 export default App
+
