@@ -9,6 +9,14 @@ const api = {
     return () => {
       ipcRenderer.removeListener('monitoring-data', listener)
     }
+  },
+  runExport: () => ipcRenderer.invoke('run-export'),
+  onExportProgress: (callback) => {
+    const listener = (_event, value) => callback(value)
+    ipcRenderer.on('export-progress', listener)
+    return () => {
+      ipcRenderer.removeListener('export-progress', listener)
+    }
   }
 }
 

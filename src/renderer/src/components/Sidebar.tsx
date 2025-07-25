@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
-import { FaHome, FaCog, FaUser, FaFileAlt, FaChess, FaEllipsisH } from 'react-icons/fa'
+import { FaHome, FaCog, FaUser, FaFileAlt, FaChess, FaEllipsisH, FaUpload } from 'react-icons/fa'
 
-export type View = 'home' | 'settings' | 'profile' | 'documents' | 'test'
+export type View = 'home' | 'settings' | 'profile' | 'documents' | 'test' | 'export'
 
 interface NavItem {
   id: View
@@ -19,6 +19,7 @@ const navItems: NavItem[] = [
   { id: 'documents', tooltip: 'Documents', icon: <FaFileAlt /> },
   { id: 'profile', tooltip: 'Profile', icon: <FaUser /> },
   { id: 'settings', tooltip: 'Settings', icon: <FaCog /> },
+  { id: 'export', tooltip: 'Export', icon: <FaUpload /> },
   { id: 'test', tooltip: 'Test', icon: <FaChess /> }
 ]
 

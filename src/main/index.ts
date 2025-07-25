@@ -3,6 +3,7 @@ import { join } from 'path'
 import { electronApp, optimizer, is } from '@electron-toolkit/utils'
 import icon from '../../resources/icon.png?asset'
 import { monitoringService } from './monitoring_service'
+import { exportService } from './export_service'
 
 function createWindow(): void {
   // Create the browser window.
@@ -54,6 +55,7 @@ function createWindow(): void {
   Menu.setApplicationMenu(menu)
 
   monitoringService.setWindow(mainWindow)
+  exportService.initialize(mainWindow)
 
   mainWindow.on('ready-to-show', () => {
     mainWindow.show()
