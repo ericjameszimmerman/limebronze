@@ -7,6 +7,8 @@ import ProfileView from './views/ProfileView'
 import { DocumentsView } from './views/DocumentsView'
 import TestView from './views/TestView'
 import ExportView from './views/ExportView'
+import SysMLView from './views/SysMLView'
+import CanvasView from './views/CanvasView'
 import StatusBar from './components/StatusBar'
 import Toast from './components/Toast'
 
@@ -42,6 +44,8 @@ function App(): React.JSX.Element {
           <div className={activeView === 'export' ? 'block' : 'hidden'}>
             <ExportView setStatusBarVisibility={setStatusBarVisibility} showToast={showToast} />
           </div>
+          <div className={activeView === 'sysml' ? 'block h-full' : 'hidden'}><SysMLView /></div>
+          <div className={activeView === 'canvas' ? 'block h-full' : 'hidden'}><CanvasView /></div>
           <div className={activeView === 'test' ? 'block' : 'hidden'}><TestView /></div>
         </main>
         {isStatusBarVisible && <StatusBar />}

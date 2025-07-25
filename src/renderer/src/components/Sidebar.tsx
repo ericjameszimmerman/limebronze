@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
-import { FaHome, FaCog, FaUser, FaFileAlt, FaChess, FaEllipsisH, FaUpload } from 'react-icons/fa'
+import { FaHome, FaCog, FaUser, FaFileAlt, FaChess, FaEllipsisH, FaUpload, FaProjectDiagram, FaRegMap } from 'react-icons/fa'
 
-export type View = 'home' | 'settings' | 'profile' | 'documents' | 'test' | 'export'
+export type View = 'home' | 'settings' | 'profile' | 'documents' | 'test' | 'export' | 'sysml' | 'canvas'
 
 interface NavItem {
   id: View
@@ -17,6 +17,8 @@ interface SidebarProps {
 const navItems: NavItem[] = [
   { id: 'home', tooltip: 'Home', icon: <FaHome /> },
   { id: 'documents', tooltip: 'Documents', icon: <FaFileAlt /> },
+  { id: 'sysml', tooltip: 'SysML', icon: <FaProjectDiagram /> },
+  { id: 'canvas', tooltip: 'Canvas', icon: <FaRegMap /> },
   { id: 'profile', tooltip: 'Profile', icon: <FaUser /> },
   { id: 'settings', tooltip: 'Settings', icon: <FaCog /> },
   { id: 'export', tooltip: 'Export', icon: <FaUpload /> },
