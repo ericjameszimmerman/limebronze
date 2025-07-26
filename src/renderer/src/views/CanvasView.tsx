@@ -74,7 +74,7 @@ const Diagram: React.FC = () => {
 
 // 2. Minimap Component
 const Minimap: React.FC = () => {
-  const { scale, stagePos } = useContext(ViewBoxContext)!
+  const { scale, stagePos, setStagePos } = useContext(ViewBoxContext)!
   const [viewBox, setViewBox] = useState({ x: 0, y: 0, width: 0, height: 0 })
   const minimapRef = useRef<any>(null)
   const viewboxRectRef = useRef<any>(null)
@@ -92,17 +92,16 @@ const Minimap: React.FC = () => {
     })
   }, [scale, stagePos])
 
-  const handleDragMove = () => {
+  const handleDragMove = (e: KonvaEventObject<DragEvent>) => {
     if (viewboxRectRef.current) {
-        const { x, y } = viewboxRectRef.current.getPosition();
-        const { setStagePos } = useContext(ViewBoxContext)!;
-        setStagePos({
-            x: -x / MINIMAP_SCALE * scale,
-            y: -y / MINIMAP_SCALE * scale,
-        });
+      const { x, y } = e.target.position()
+      setStagePos({
+        x: (-x / MINIMAP_SCALE) * scale,
+        y: (-y / MINIMAP_SCALE) * scale
+      })
     }
   }
-
+  
   return (
     <div className="absolute bottom-5 right-5 border-2 border-gray-400 bg-white bg-opacity-70">
       <Stage width={MINIMAP_WIDTH} height={MINIMAP_HEIGHT} ref={minimapRef}>
